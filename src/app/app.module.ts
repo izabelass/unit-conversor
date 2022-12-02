@@ -7,14 +7,16 @@ import { AppComponent } from './app.component';
 import { ConversorComponent } from './conversor/conversor.component';
 import { UnitSelectionComponent } from './unit-selection/unit-selection.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AngularMaterialModule } from './angular-material/angular-material/angular-material.module';
+import { AngularMaterialModule } from './angular-material/angular-material.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ConversorComponent,
-    UnitSelectionComponent
+    UnitSelectionComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
