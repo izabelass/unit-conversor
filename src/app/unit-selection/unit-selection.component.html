@@ -1,1 +1,13 @@
-<p>unit-selection works!</p>
+<form>
+  <h4>Conversor</h4>
+  <mat-form-field appearance="fill">
+    <mat-label>Favorite food</mat-label>
+    <mat-select [(ngModel)]="selectedValue" name="food">
+      <mat-option *ngFor="let temperatura of temperaturas" [value]="temperatura.value">
+        {{temperatura.viewValue}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <p> Selected food: {{selectedValue}} </p>
+</form>
+
