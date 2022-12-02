@@ -3,10 +3,14 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { ConversorComponent } from './conversor/conversor.component';
+import { UnitSelectionComponent } from './unit-selection/unit-selection.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ConversorComponent,
+    UnitSelectionComponent
   ],
   imports: [
     BrowserModule,
