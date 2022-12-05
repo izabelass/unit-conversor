@@ -1,9 +1,5 @@
 import { Component, OnInit, Output } from '@angular/core';
-
-interface Temperatura {
-  value: string;
-  viewValue: string;
-}
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-unit-selection',
@@ -13,17 +9,23 @@ interface Temperatura {
 export class UnitSelectionComponent implements OnInit {
   @Output() selectedValue: string = '';
   selectedCar: string = '';
-
-  temperaturas: Temperatura[] = [
-    {value: 'celsius', viewValue: 'Celsius'},
-    {value: 'kelvin', viewValue: 'Kelvin'},
-    {value: 'fahreinheit', viewValue: 'Fahreinheit'},
-  ];
+ 
+  temperaturas = ['celsius', 'kelvin','fahreinheit'];
 
   constructor() { }
 
   ngOnInit(): void {
     
+  }
+
+  tempConversor = new FormGroup({
+    converterDeTemp: new FormControl([]),
+    converterParaTemp: new FormControl([]),
+
+  });
+
+  btnTempConverter(){
+   
   }
 
 }
