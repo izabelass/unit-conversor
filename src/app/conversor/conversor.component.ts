@@ -14,10 +14,13 @@ export class ConversorComponent implements OnInit {
   @Output() selectedValue: string = '';
   selectedCar: string = '';
 
+  unidade: string = '';
+  valorAConverter?: any;
+
   temperaturas: Temperatura[] = [
-    {value: 'celsius', viewValue: 'Celsius'},
-    {value: 'kelvin', viewValue: 'Kelvin'},
-    {value: 'fahreinheit', viewValue: 'Fahreinheit'},
+    { value: 'celsius', viewValue: 'Celsius' },
+    { value: 'kelvin', viewValue: 'Kelvin' },
+    { value: 'fahreinheit', viewValue: 'Fahreinheit' },
   ];
 
   constructor() { }
@@ -25,4 +28,10 @@ export class ConversorComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  mostraValores(unidade: any, valorAConverter: any) {
+    const unidade1: string = unidade.value;
+    const valor1: number = valorAConverter;
+    console.log(unidade1);
+    console.log(valor1);
+  }
 }

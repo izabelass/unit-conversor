@@ -8,7 +8,6 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 
-
 const materialModules = [
   MatInputModule,
   MatFormFieldModule,
@@ -17,7 +16,6 @@ const materialModules = [
   MatSelectModule,
   MatToolbarModule,
   MatIconModule
-
 ]
 
 @NgModule({
@@ -25,4 +23,5 @@ const materialModules = [
   imports: [CommonModule, ...materialModules],
   exports: [...materialModules]
 })
+
 export class AngularMaterialModule { }

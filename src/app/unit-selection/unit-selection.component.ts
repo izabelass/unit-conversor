@@ -23,6 +23,7 @@ export class UnitSelectionComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    
   }
 
 }

@@ -1,13 +1,14 @@
 <form>
-  <h4>Conversor</h4>
-  <mat-form-field appearance="fill">
-    <mat-label>Favorite food</mat-label>
-    <mat-select [(ngModel)]="selectedValue" name="food">
-      <mat-option *ngFor="let temperatura of temperaturas" [value]="temperatura.value">
-        {{temperatura.viewValue}}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
-  <p> Selected food: {{selectedValue}} </p>
+  <h4>Selecione abaixo um tipo de unidade de medida desejada:</h4>
+      <mat-form-field appearance="fill">
+        <mat-label>Unidade</mat-label>
+        <mat-select [(ngModel)]="selectedValue" name="unity" #unidade>
+          <mat-option *ngFor="let temperatura of temperaturas" [value]="temperatura.value">
+            {{ temperatura.viewValue }}
+          </mat-option>
+        </mat-select>
+
+      </mat-form-field>
+      <p> Unidade selecionada: {{selectedValue}}</p>
 </form>
 
