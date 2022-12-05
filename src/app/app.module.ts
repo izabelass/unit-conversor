@@ -12,12 +12,13 @@ import { UnitSelectionComponent } from './unit-selection/unit-selection.componen
 import { ConversorComponent } from './conversor/conversor.component';
 import { HeaderComponent } from './header/header.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
     ConversorComponent,
     UnitSelectionComponent,
-    HeaderComponent
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,

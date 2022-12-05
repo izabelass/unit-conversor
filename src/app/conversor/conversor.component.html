@@ -1,8 +1,9 @@
 <mat-card>
-  <mat-card-title>Temperatura</mat-card-title>
+  <mat-card-title>Calculadoras</mat-card-title>
   <mat-card-actions>
     <form class="example-form">
-      <h4>Selecione abaixo um tipo de unidade de medida desejada:</h4>
+
+      <h4>Escolha abaixo o tipo de conversão desejada: </h4>
       <mat-form-field appearance="fill">
         <mat-label>Unidade</mat-label>
         <mat-select [(ngModel)]="selectedValue" name="unity" #unidade>
@@ -12,14 +13,12 @@
         </mat-select>
 
       </mat-form-field>
-      <p> Unidade selecionada: {{selectedValue}}</p>
-      <mat-form-field class="example-full-width text-center">
-        <input matInput placeholder="Insira o valor a ser convertido" #valorAConverter>
-      </mat-form-field>
-
-      <mat-card-actions>
-        <button mat-button (click)="mostraValores(unidade, valorAConverter.value)">Converter</button>
-      </mat-card-actions>
+      <p> Tipo selecionado é: <em>{{selectedValue}}</em></p>
     </form>
+
+    <mat-card-actions>
+      <button mat-raised-button (click)="operacaoSelecionada(unidade.value)">Confirmar</button>
+    </mat-card-actions>
+
   </mat-card-actions>
 </mat-card>

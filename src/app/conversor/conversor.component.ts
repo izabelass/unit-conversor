@@ -1,4 +1,5 @@
 import { Component, OnInit, Output } from '@angular/core';
+import { CalculosService } from '../calculos.service';
 
 interface Temperatura {
   value: string;
@@ -14,24 +15,18 @@ export class ConversorComponent implements OnInit {
   @Output() selectedValue: string = '';
   selectedCar: string = '';
 
-  unidade: string = '';
-  valorAConverter?: any;
-
   temperaturas: Temperatura[] = [
-    { value: 'celsius', viewValue: 'Celsius' },
-    { value: 'kelvin', viewValue: 'Kelvin' },
-    { value: 'fahreinheit', viewValue: 'Fahreinheit' },
+    { value: 'temperatura', viewValue: 'Temperatura' },
+    { value: 'peso', viewValue: 'Peso' },
+    { value: 'medida', viewValue: 'Medida' },
   ];
 
-  constructor() { }
+  constructor(private calculos: CalculosService) { }
 
   ngOnInit(): void {
   }
 
-  mostraValores(unidade: any, valorAConverter: any) {
-    const unidade1: string = unidade.value;
-    const valor1: number = valorAConverter;
-    console.log(unidade1);
-    console.log(valor1);
+  operacaoSelecionada(unidade: any) {
+    return console.log(unidade);
   }
 }
