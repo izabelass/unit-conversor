@@ -1,13 +1,125 @@
-<form>
-  <h4>Conversor</h4>
-  <mat-form-field appearance="fill">
-    <mat-label>Favorite food</mat-label>
-    <mat-select [(ngModel)]="selectedValue" name="food">
-      <mat-option *ngFor="let temperatura of temperaturas" [value]="temperatura.value">
-        {{temperatura.viewValue}}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
-  <p> Selected food: {{selectedValue}} </p>
-</form>
+<div class="container">
 
+  <div class="row">
+
+    <!-- CONVERSOR TEMPERATURA -->
+    <div class="col-12 m-3">
+      <mat-card class="text-center bg-light">
+          <mat-card-title class="my-3">Calculadora de Temperatura</mat-card-title>
+          <mat-card-subtitle class="mb-3">Selecione os valores para a conversão:</mat-card-subtitle>
+
+        <form [formGroup]="tempConversor">
+      
+          <mat-form-field class="me-5" appearance="fill">
+            <mat-label>Converter de: </mat-label>
+            <mat-select formControlName="convertTempFrom" #convertTempFrom [(value)]="TempFromValue">
+              <mat-option
+                *ngFor="let temperature of temperatures"
+                [value]="temperature"
+              >
+                {{ temperature }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+      
+          <mat-form-field appearance="fill">
+            <mat-label>Converter para: </mat-label>
+            <mat-select formControlName="convertTempTo" #convertTempTo [(value)]="TempToValue">
+              <mat-option
+                *ngFor="let temperature of temperatures"
+                [value]="temperature"
+              >
+                {{ temperature }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+      
+          <mat-card-actions>
+            <button mat-raised-button color="primary" (click)="convertTemperature()">Converter</button>
+          </mat-card-actions>
+        </form>
+      </mat-card>
+    </div>
+
+    <!-- CONVERSOR PESO -->
+    <div class="col-12 m-3">
+      <mat-card class="text-center bg-light">
+        <mat-card-title class="my-3">Calculadora de Peso</mat-card-title>
+        <mat-card-subtitle class="mb-3">Selecione os valores para a conversão:</mat-card-subtitle>
+
+        <form [formGroup]="weightConversor">
+      
+          <mat-form-field class="me-5" appearance="fill">
+            <mat-label>Converter de: </mat-label>
+            <mat-select formControlName="convertWeightFrom" #convertWeightFrom [(value)]="WeightFromValue">
+              <mat-option
+                *ngFor="let weight of weights"
+                [value]="weight"
+              >
+                {{ weight }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+      
+          <mat-form-field appearance="fill">
+            <mat-label>Converter para: </mat-label>
+            <mat-select formControlName="convertWeightTo" #convertWeightTo [(value)]="WeightToValue">
+              <mat-option
+                *ngFor="let weight of weights"
+                [value]="weight"
+              >
+                {{ weight }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+      
+          <mat-card-actions>
+            <button mat-raised-button color="primary" (click)="convertWeight()">Converter</button>
+          </mat-card-actions>
+        </form>
+      </mat-card>
+    </div>
+
+    <!-- CONVERSOR COMPRIMENTO -->
+    <div class="col-12 m-3">
+      <mat-card class="text-center bg-light">
+        <mat-card-title class="my-3">Calculadora de Comprimento</mat-card-title>
+        <mat-card-subtitle class="mb-3">Selecione os valores para a conversão:</mat-card-subtitle>
+
+        <form [formGroup]="lenghtConversor">
+      
+          <mat-form-field class="me-5" appearance="fill">
+            <mat-label>Converter de: </mat-label>
+            <mat-select formControlName="convertLenghtFrom" #convertLenghtFrom [(value)]="LenghtFromValue">
+              <mat-option
+                *ngFor="let lenght of lenghts"
+                [value]="lenght"
+              >
+                {{ lenght }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+      
+          <mat-form-field appearance="fill">
+            <mat-label>Converter para: </mat-label>
+            <mat-select formControlName="convertLenghtTo" #convertLenghtTo [(value)]="LenghtToValue">
+              <mat-option
+                *ngFor="let lenght of lenghts"
+                [value]="lenght"
+              >
+                {{ lenght }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+      
+          <mat-card-actions>
+            <button mat-raised-button color="primary" (click)="convertLenght()">Converter</button>
+          </mat-card-actions>
+        </form>
+      </mat-card>
+    </div>
+
+
+  </div>
+
+</div>
