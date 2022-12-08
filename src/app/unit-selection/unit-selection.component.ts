@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
@@ -7,28 +7,65 @@ import { FormControl, FormGroup } from '@angular/forms';
   styleUrls: ['./unit-selection.component.scss']
 })
 export class UnitSelectionComponent implements OnInit {
-  @Output() selectedValue: string = '';
-  selectedCar: string = '';
+  temperatures = ["Celsius", "Fahrenheit", "Kelvin"];
+  weights = ["Grama", "Quilo", "Libra", "Onça"];
+  lenghts = ["Centímetro", "Metro", "Polegadas", "Pés", "Jardas"];
 
-  temperaturas = ['celsius', 'kelvin', 'fahrenheit'];
+  TempFromValue:string = 'teste';
+  TempToValue:string = '';
 
-  tipoMedida = '';
+  WeightFromValue:string = '';
+  WeightToValue:string = '';
 
-  @Input() title: string = 'Temperatura';
+  LenghtFromValue:string = '';
+  LenghtToValue:string = '';
+
+
+  tempConversor = new FormGroup({
+    convertTempFrom: new FormControl([]),
+    convertTempTo: new FormControl([]),
+  });
+
+  weightConversor = new FormGroup({
+    convertWeightFrom: new FormControl([]),
+    convertWeightTo: new FormControl([]),
+  });
+
+  lenghtConversor = new FormGroup({
+    convertLenghtFrom: new FormControl([]),
+    convertLenghtTo: new FormControl([]),
+  });
+
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  tempConversor = new FormGroup({
-    converterDeTemp: new FormControl([]),
-    converterParaTemp: new FormControl([]),
-
-  });
-
-  addMedida(inputMedida: string){
-      this.tipoMedida = inputMedida;
+  convertTemperature() {
+    if(this.TempFromValue === this.TempToValue) {
+      console.log('deu ruim na temperatura');
+    } else {
+      console.log('Convertendo de: ', this.TempFromValue + ', para: ', this.TempToValue);
+    }
   }
+
+  convertWeight() {
+    if(this.TempFromValue === this.TempToValue) {
+      console.log('deu ruim no peso');
+    } else {
+      console.log('Convertendo de: ', this.WeightFromValue + ', para: ', this.WeightToValue);
+    }
+  }
+
+  convertLenght() {
+    if(this.TempFromValue === this.TempToValue) {
+      console.log('deu ruim no comprimento');
+    } else {
+      console.log('Convertendo de: ', this.LenghtFromValue + ', para: ', this.LenghtToValue);
+    }
+  }
+
+
 
 }
