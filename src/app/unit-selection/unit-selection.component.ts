@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-unit-selection',
@@ -11,14 +12,14 @@ export class UnitSelectionComponent implements OnInit {
   weights = ["Grama", "Quilo", "Libra", "Onça"];
   lenghts = ["Centímetro", "Metro", "Polegadas", "Pés", "Jardas"];
 
-  TempFromValue:string = 'teste';
-  TempToValue:string = '';
+  tempFromValue:string = '';
+  tempToValue:string = '';
 
-  WeightFromValue:string = '';
-  WeightToValue:string = '';
+  weightFromValue:string = '';
+  weightToValue:string = '';
 
-  LenghtFromValue:string = '';
-  LenghtToValue:string = '';
+  lenghtFromValue:string = '';
+  lenghtToValue:string = '';
 
 
   tempConversor = new FormGroup({
@@ -37,37 +38,40 @@ export class UnitSelectionComponent implements OnInit {
   });
 
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
 
-  convertTemperature() {
-    if(this.TempFromValue === this.TempToValue) {
-      console.log('deu ruim na temperatura');
-    } else {
-      console.log('Convertendo de: ', this.TempFromValue + ', para: ', this.TempToValue);
+  selectedValueRouter(valueFrom: string, valueTo: string): any {
+    if(valueFrom !== valueTo){
+      console.log('deu certo');
+      this.router.navigate([
+        '/conversor', 
+        valueFrom, 
+        valueTo,
+      ]);
     }
+    console.log('deu ruim');
+  }
+
+
+  convertTemperature() {
+    console.log('Convertendo de: ', this.tempFromValue + ', para: ', this.tempToValue); 
+    this.selectedValueRouter(this.tempFromValue, this.tempToValue);
+    
   }
 
   convertWeight() {
-    if(this.TempFromValue === this.TempToValue) {
-      console.log('deu ruim no peso');
-    } else {
-      console.log('Convertendo de: ', this.WeightFromValue + ', para: ', this.WeightToValue);
-    }
+      console.log('Convertendo de: ', this.weightFromValue + ', para: ', this.weightToValue);
+      this.selectedValueRouter(this.weightFromValue, this.weightToValue);
   }
 
   convertLenght() {
-    if(this.TempFromValue === this.TempToValue) {
-      console.log('deu ruim no comprimento');
-    } else {
-      console.log('Convertendo de: ', this.LenghtFromValue + ', para: ', this.LenghtToValue);
-    }
+    console.log('Convertendo de: ', this.lenghtFromValue + ', para: ', this.lenghtToValue);
+    this.selectedValueRouter(this.lenghtFromValue, this.lenghtToValue);
   }
-
   
-
 }
 
 

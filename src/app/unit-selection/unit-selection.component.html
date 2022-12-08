@@ -12,7 +12,7 @@
       
           <mat-form-field class="me-5" appearance="fill">
             <mat-label>Converter de: </mat-label>
-            <mat-select formControlName="convertTempFrom" #convertTempFrom [(value)]="TempFromValue">
+            <mat-select formControlName="convertTempFrom" #convertTempFrom [(value)]="tempFromValue">
               <mat-option
                 *ngFor="let temperature of temperatures"
                 [value]="temperature"
@@ -24,7 +24,7 @@
       
           <mat-form-field appearance="fill">
             <mat-label>Converter para: </mat-label>
-            <mat-select formControlName="convertTempTo" #convertTempTo [(value)]="TempToValue">
+            <mat-select formControlName="convertTempTo" #convertTempTo [(value)]="tempToValue">
               <mat-option
                 *ngFor="let temperature of temperatures"
                 [value]="temperature"
@@ -51,7 +51,7 @@
       
           <mat-form-field class="me-5" appearance="fill">
             <mat-label>Converter de: </mat-label>
-            <mat-select formControlName="convertWeightFrom" #convertWeightFrom [(value)]="WeightFromValue">
+            <mat-select formControlName="convertWeightFrom" #convertWeightFrom [(value)]="weightFromValue">
               <mat-option
                 *ngFor="let weight of weights"
                 [value]="weight"
@@ -63,7 +63,7 @@
       
           <mat-form-field appearance="fill">
             <mat-label>Converter para: </mat-label>
-            <mat-select formControlName="convertWeightTo" #convertWeightTo [(value)]="WeightToValue">
+            <mat-select formControlName="convertWeightTo" #convertWeightTo [(value)]="weightToValue">
               <mat-option
                 *ngFor="let weight of weights"
                 [value]="weight"
@@ -90,7 +90,7 @@
       
           <mat-form-field class="me-5" appearance="fill">
             <mat-label>Converter de: </mat-label>
-            <mat-select formControlName="convertLenghtFrom" #convertLenghtFrom [(value)]="LenghtFromValue">
+            <mat-select formControlName="convertLenghtFrom" #convertLenghtFrom [(value)]="lenghtFromValue">
               <mat-option
                 *ngFor="let lenght of lenghts"
                 [value]="lenght"
@@ -102,7 +102,7 @@
       
           <mat-form-field appearance="fill">
             <mat-label>Converter para: </mat-label>
-            <mat-select formControlName="convertLenghtTo" #convertLenghtTo [(value)]="LenghtToValue">
+            <mat-select formControlName="convertLenghtTo" #convertLenghtTo [(value)]="lenghtToValue">
               <mat-option
                 *ngFor="let lenght of lenghts"
                 [value]="lenght"
