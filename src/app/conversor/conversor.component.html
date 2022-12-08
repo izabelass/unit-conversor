@@ -1,23 +1,24 @@
 <mat-card>
   <mat-card-title>Calculadoras</mat-card-title>
   <mat-card-actions>
+
     <form class="example-form">
 
-      <h4>Escolha abaixo o tipo de conversão desejada: </h4>
+      <h4>Escolha abaixo o tipo de conversão desejada:  </h4>
       <mat-form-field appearance="fill">
         <mat-label>Unidade</mat-label>
-        <mat-select [(ngModel)]="selectedValue" name="unity" #unidade>
-          <mat-option *ngFor="let temperatura of temperaturas" [value]="temperatura.value">
-            {{ temperatura.viewValue }}
+       
+        <mat-select formControlName="tipoMedida" #tipoMedida >
+          <mat-option *ngFor="let tipo of tipos" [value]="tipo.value">
+            {{ tipo.viewValue }}
           </mat-option>
         </mat-select>
 
       </mat-form-field>
-      <p> Tipo selecionado é: <em>{{selectedValue}}</em></p>
     </form>
 
     <mat-card-actions>
-      <button mat-raised-button (click)="operacaoSelecionada(unidade.value)">Confirmar</button>
+      <button mat-raised-button (click)="addMedida(tipoMedida.value)">Confirmar</button>
     </mat-card-actions>
 
   </mat-card-actions>

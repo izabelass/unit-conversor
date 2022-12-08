@@ -1,7 +1,12 @@
-import { Component, OnInit, Output } from '@angular/core';
-import { CalculosService } from '../calculos.service';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 
 interface Temperatura {
+  value: string;
+  viewValue: string;
+}
+
+interface Tipos {
   value: string;
   viewValue: string;
 }
@@ -12,21 +17,35 @@ interface Temperatura {
   styleUrls: ['./conversor.component.scss']
 })
 export class ConversorComponent implements OnInit {
-  @Output() selectedValue: string = '';
+  selectedValue: string = '';
   selectedCar: string = '';
-
-  temperaturas: Temperatura[] = [
+  
+  tipos: Tipos[] = [
     { value: 'temperatura', viewValue: 'Temperatura' },
     { value: 'peso', viewValue: 'Peso' },
     { value: 'medida', viewValue: 'Medida' },
   ];
 
-  constructor(private calculos: CalculosService) { }
+  @Output() newUnitTypeEvent = new EventEmitter<string>();
+
+  @Input() temperaturas: Temperatura[] = [
+    { value: 'temperatura', viewValue: 'Temperatura' },
+    { value: 'peso', viewValue: 'Peso' },
+    { value: 'medida', viewValue: 'Medida' },
+  ];
+
+    selectMedidas = new FormGroup({
+    tipoMedida: new FormControl([
+
+    ]),
+  })
+  
+  constructor() { }
 
   ngOnInit(): void {
   }
 
-  operacaoSelecionada(unidade: any) {
-    return console.log(unidade);
+  addMedida(value: string) {
+    this.newUnitTypeEvent.emit(value);
   }
 }

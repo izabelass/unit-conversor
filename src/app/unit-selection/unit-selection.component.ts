@@ -1,4 +1,4 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
@@ -9,13 +9,16 @@ import { FormControl, FormGroup } from '@angular/forms';
 export class UnitSelectionComponent implements OnInit {
   @Output() selectedValue: string = '';
   selectedCar: string = '';
- 
-  temperaturas = ['celsius', 'kelvin','fahreinheit'];
+
+  temperaturas = ['celsius', 'kelvin', 'fahrenheit'];
+
+  tipoMedida = '';
+
+  @Input() title: string = 'Temperatura';
 
   constructor() { }
 
   ngOnInit(): void {
-    
   }
 
   tempConversor = new FormGroup({
@@ -24,8 +27,8 @@ export class UnitSelectionComponent implements OnInit {
 
   });
 
-  btnTempConverter(){
-   
+  addMedida(inputMedida: string){
+      this.tipoMedida = inputMedida;
   }
 
 }

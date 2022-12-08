@@ -1,13 +1,13 @@
 <mat-card class="tex-center">
-  <form [formGroup]="tempConversor">
-    
-    <h1>Você selecionou a calculadora de: </h1>
+  <form [formGroup]="tempConversor">    
+    <h1>Você selecionou a calculadora de:[title]="title" </h1>
 
     <h3>Preencha os valores para a conversão:</h3>
 
     <mat-form-field class="me-5" appearance="fill">
-      <mat-label>Converter de: </mat-label>
-      <mat-select formControlName="converterDeTemp" #converterDeTemp>
+      <app-conversor></app-conversor>
+      <mat-label>Converter de: {{ tipoMedida }}</mat-label>
+         <mat-select formControlName="converterDeTemp" #converterDeTemp>
         <mat-option *ngFor="let temperatura of temperaturas; let i = index" value="index">
           {{ temperatura }}
         </mat-option>
