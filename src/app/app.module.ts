@@ -10,6 +10,7 @@ import { UnitSelectionComponent } from './unit-selection/unit-selection.componen
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ValueInputComponent } from './value-input/value-input.component';
+import { AngularMaterialModule } from './angular-material/angular-material.module';
 
 @NgModule({
   declarations: [
@@ -22,10 +23,10 @@ import { ValueInputComponent } from './value-input/value-input.component';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    AngularMaterialModule,
     NgbModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AngularMaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]

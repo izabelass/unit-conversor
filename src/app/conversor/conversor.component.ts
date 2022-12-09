@@ -8,9 +8,6 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ConversorComponent implements OnInit {
 
-  constructor() {
-
-
   from!: string | null;
   to!: string | null;
   measureFrom: string = '';
@@ -20,7 +17,6 @@ export class ConversorComponent implements OnInit {
     
   }
   ngOnInit(): void {
-
     this.from = this.route.snapshot.paramMap.get('from');
     this.to = this.route.snapshot.paramMap.get('to');
 
