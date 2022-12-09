@@ -27,4 +27,10 @@ export class ConversorComponent implements OnInit {
     }
   }
 
+  convertValue(newValue: string) {
+    console.log(parseInt(newValue) + 2);
+
+    
+  }
+
 }

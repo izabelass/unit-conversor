@@ -7,6 +7,7 @@ const routes: Routes = [
   {path: 'unit-selection', component: UnitSelectionComponent },
   {path: 'conversor/:from/:to', component: ConversorComponent },
   {path: 'conversor', component: ConversorComponent },
+  {path: '', pathMatch: 'full', redirectTo: 'unit-selection'},
 ];
 
 @NgModule({

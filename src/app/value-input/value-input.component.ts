@@ -13,10 +13,16 @@ export class ValueInputComponent implements OnInit {
     quantityInput: new FormControl([]),
   });
 
+  @Output() quantityInputEvent = new EventEmitter<string>();
+
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  convert(value: string) {
+    this.quantityInputEvent.emit(value);
   }
 
 

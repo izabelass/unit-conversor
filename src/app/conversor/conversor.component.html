@@ -4,7 +4,7 @@
             <h1>Você está vendo a conversão entre {{measureFrom}} e {{measureTo}}</h1>
         </div>
         <div class="col-6">
-            <app-value-input [measure]="measureFrom"></app-value-input>
+            <app-value-input [measure]="measureFrom" (quantityInputEvent)="convertValue($event)"></app-value-input>
         </div>
         <div class="col-6">
             <app-value-input [measure]="measureTo"></app-value-input>
