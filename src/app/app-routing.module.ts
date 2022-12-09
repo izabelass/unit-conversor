@@ -5,8 +5,8 @@ import { ConversorComponent } from './conversor/conversor.component';
 
 const routes: Routes = [
   {path: 'unit-selection', component: UnitSelectionComponent },
+  {path: 'conversor/:from/:to', component: ConversorComponent },
   {path: 'conversor', component: ConversorComponent },
-
 ];
 
 @NgModule({

@@ -9,12 +9,14 @@ import { ConversorComponent } from './conversor/conversor.component';
 import { UnitSelectionComponent } from './unit-selection/unit-selection.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { AngularMaterialModule } from './angular-material/angular-material.module';
+import { ValueInputComponent } from './value-input/value-input.component';
+
 @NgModule({
   declarations: [
     AppComponent,
     ConversorComponent,
     UnitSelectionComponent,
+    ValueInputComponent,
   ],
   imports: [
     BrowserModule,
@@ -23,7 +25,7 @@ import { AngularMaterialModule } from './angular-material/angular-material.modul
     AngularMaterialModule,
     NgbModule,
     FormsModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
