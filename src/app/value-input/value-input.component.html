@@ -1,20 +1,31 @@
-<mat-card class="text-center">
+<mat-card class="flex-column">
     
-    <mat-card-title class="h5">Medida a ser convertida:</mat-card-title>
+    <mat-card-title class="h5">Digite o valor que sera convertido</mat-card-title>
     
-    <form class="example-form" [formGroup]="quantityInputForm">
-        <mat-form-field class="example-full-width">
+    <form class=" d-flex justify-content-center" [formGroup]="quantityInputForm">
+        <mat-form-field class="flex-column col-md-2 me-4">
           <input matInput 
           type="number" 
-          placeholder="Insira o valor a ser convertido"
+          placeholder="{{measureFrom}}"
           formControlName="quantityInput"
           #quantityInput
           >
         </mat-form-field>
+
+        <mat-form-field class=" flex-column col-md-2">
+            <input matInput 
+            type="number" 
+            placeholder="{{measureTo}}"
+            formControlName="quantityInput"
+            #quantityInput
+            >
+          </mat-form-field>
     </form>
+   
+    <h1>{{measureFrom}}</h1>
 
     <mat-card-actions>
-        <button mat-raised-button>Converter</button>
+        <button mat-raised-button class="mb-5">Converter</button>
     </mat-card-actions>
 
 </mat-card>

@@ -9,6 +9,9 @@ import { FormGroup, FormControl } from '@angular/forms';
 export class ValueInputComponent implements OnInit {
   @Input() measure = '';
 
+  @Input() measureFrom: string = '';
+  @Input() measureTo: string = '';
+
   quantityInputForm = new FormGroup({
     quantityInput: new FormControl([]),
   });

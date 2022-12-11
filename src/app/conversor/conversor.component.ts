@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -10,8 +10,8 @@ export class ConversorComponent implements OnInit {
 
   from!: string | null;
   to!: string | null;
-  measureFrom: string = '';
-  measureTo: string = '';
+  @Input() measureFrom: string = '';
+  @Input() measureTo: string = '';
  
   constructor(private route: ActivatedRoute) {
     
