@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -12,14 +12,14 @@ export class UnitSelectionComponent implements OnInit {
   weights = ["Grama", "Quilo", "Libra", "Onça"];
   lenghts = ["Centímetro", "Metro", "Polegadas", "Pés", "Jardas"];
 
-  tempFromValue:string = '';
-  tempToValue:string = '';
+  tempFromValue: string = '';
+  tempToValue: string = '';
 
-  weightFromValue:string = '';
-  weightToValue:string = '';
+  weightFromValue: string = '';
+  weightToValue: string = '';
 
-  lenghtFromValue:string = '';
-  lenghtToValue:string = '';
+  lenghtFromValue: string = '';
+  lenghtToValue: string = '';
 
 
   tempConversor = new FormGroup({
@@ -44,11 +44,11 @@ export class UnitSelectionComponent implements OnInit {
   }
 
   selectedValueRouter(valueFrom: string, valueTo: string): any {
-    if(valueFrom !== valueTo){
+    if (valueFrom !== valueTo) {
       console.log('deu certo');
       this.router.navigate([
-        '/conversor', 
-        valueFrom, 
+        '/conversor',
+        valueFrom,
         valueTo,
       ]);
     }
@@ -57,19 +57,19 @@ export class UnitSelectionComponent implements OnInit {
 
 
   convertTemperature() {
-    console.log('Convertendo de: ', this.tempFromValue + ', para: ', this.tempToValue); 
+    console.log('Convertendo de: ', this.tempFromValue + ', para: ', this.tempToValue);
     this.selectedValueRouter(this.tempFromValue, this.tempToValue);
-    
+
   }
 
   convertWeight() {
-      console.log('Convertendo de: ', this.weightFromValue + ', para: ', this.weightToValue);
-      this.selectedValueRouter(this.weightFromValue, this.weightToValue);
+    console.log('Convertendo de: ', this.weightFromValue + ', para: ', this.weightToValue);
+    this.selectedValueRouter(this.weightFromValue, this.weightToValue);
   }
 
   convertLenght() {
     console.log('Convertendo de: ', this.lenghtFromValue + ', para: ', this.lenghtToValue);
     this.selectedValueRouter(this.lenghtFromValue, this.lenghtToValue);
   }
-  
+
 }

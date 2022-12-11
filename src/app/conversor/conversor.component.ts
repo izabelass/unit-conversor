@@ -7,23 +7,23 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./conversor.component.scss']
 })
 export class ConversorComponent implements OnInit {
+  @Input() from!: string | null;
+  @Input() to!: string | null
 
-  from!: string | null;
-  to!: string | null;
   @Input() measureFrom: string = '';
   @Input() measureTo: string = '';
- 
+
   constructor(private route: ActivatedRoute) {
-    
+
   }
   ngOnInit(): void {
     this.from = this.route.snapshot.paramMap.get('from');
     this.to = this.route.snapshot.paramMap.get('to');
 
-    if(this.from && this.to) {
+    if (this.from && this.to) {
 
-    this.measureFrom = this.from;
-    this.measureTo = this.to;
+      this.measureFrom = this.from;
+      this.measureTo = this.to;
     }
   }
 
