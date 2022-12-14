@@ -1,21 +1,23 @@
 <mat-card class="flex-column">
     <mat-card-title class="h5">Digite o valor que sera convertido</mat-card-title>
-
+  
     <form class="d-flex justify-content-center" [formGroup]="quantityInputForm">
         <mat-form-field class="flex-column col-md-2 me-4">
-            <input matInput type="number" placeholder="{{measure}}" formControlName="quantityInput" #quantityInput
+            <input matInput type="number" 
+            placeholder="{{measure}}" formControlName="quantityInput" 
+            #quantityInput
                 id="primeiroValor">
         </mat-form-field>
 
         <mat-form-field class=" flex-column col-md-2">
-              <input matInput type="number" placeholder="{{measureTo}}" formControlName="quantityInput" #quantityInput
-                id="segundoValor">
+              <input matInput type="number" placeholder="{{measureTo}}" formControlName="quantityInput" 
+              #quantityInput
+            id="segundoValor">
         </mat-form-field>
     </form>
     <mat-card-actions>
         <button mat-raised-button class="mb-5"
-            (click)="receiveInput(segundoValor, primeiroValor)">Converter</button>
+        (click)="conversion(primeiroValor); receiveInput(primeiroValor)" >Converter</button>
     </mat-card-actions>
-
-
+  
 </mat-card>

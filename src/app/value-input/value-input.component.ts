@@ -9,8 +9,9 @@ import { FormGroup, FormControl } from '@angular/forms';
 export class ValueInputComponent implements OnInit {
   @Input() measure = '';
   @Input() measureTo = '';
-  primeiroValor: number = 0;
-  segundoValor: number = 0
+
+  primeiroValor?: number;
+  resultado = ''
 
   quantityInputForm = new FormGroup({
     quantityInput: new FormControl([]),
@@ -21,12 +22,15 @@ export class ValueInputComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  receiveInput(segundoValor: number, primeiroValor: number) {
-    primeiroValor = parseInt((<HTMLInputElement>document.getElementById('primeiroValor')).value);
+  receiveInput(primeiroValor: any) {
+    primeiroValor = parseFloat((<HTMLInputElement>document.querySelector('#primeiroValor')).value);
+    console.log("primeiroValor " + primeiroValor);
+  }
 
-    segundoValor = parseInt((<HTMLInputElement>document.getElementById('segundoValor')).value);
-
-    console.log(primeiroValor, segundoValor);
+  conversion(primeiroValor: any) {
+    let resultado = this.primeiroValor
+    console.log("resultado = " + resultado);
+    document.getElementById('segundoValor')?.innerHTML
   }
 
 
