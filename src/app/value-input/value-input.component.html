@@ -1,23 +1,32 @@
 <mat-card class="flex-column">
-    <mat-card-title class="h5">Digite o valor que sera convertido</mat-card-title>
-  
+    <mat-card-title class="h5">Informe o valor para conversão</mat-card-title>
+
     <form class="d-flex justify-content-center" [formGroup]="quantityInputForm">
-        <mat-form-field class="flex-column col-md-2 me-4">
-            <input matInput type="number" 
-            placeholder="{{measure}}" formControlName="quantityInput" 
-            #quantityInput
-                id="primeiroValor">
+        <mat-form-field class="flex-column col-md-2 me-5">
+            <input matInput type="text" placeholder="{{measure}}" formControlName="quantityInput" #quantityInput
+                id="primeiroValor" #primeiroValor>
         </mat-form-field>
 
         <mat-form-field class=" flex-column col-md-2">
-              <input matInput type="number" placeholder="{{measureTo}}" formControlName="quantityInput" 
-              #quantityInput
-            id="segundoValor">
+            <input matInput type="text" placeholder="{{measureTo}}" formControlName="quantityInput" #quantityInput
+                id="segundoValor" #segundoValor>
         </mat-form-field>
     </form>
-    <mat-card-actions>
-        <button mat-raised-button class="mb-5"
-        (click)="conversion(primeiroValor); receiveInput(primeiroValor)" >Converter</button>
+
+    <mat-card-actions class="mb-3">
+
+        <!-- Input Valor 1 -->
+        <button color="primary" mat-raised-button class="me-5" (click)="converteValor1()">Converter</button>
+
+        <!-- Input Valor 2 -->
+        <button color="primary" mat-raised-button (click)="converteValor2()">Converter</button>
+
     </mat-card-actions>
-  
+
+    <!-- Valor Convertido -->
+    <mat-card-actions *ngIf="resultado" class="mt-2 bg-light p-3">
+        <input matInput type="text" id="resultado" value="{{ resultado }} °">
+    </mat-card-actions>
+
+
 </mat-card>

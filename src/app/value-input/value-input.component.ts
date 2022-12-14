@@ -6,32 +6,44 @@ import { FormGroup, FormControl } from '@angular/forms';
   templateUrl: './value-input.component.html',
   styleUrls: ['./value-input.component.scss']
 })
+
 export class ValueInputComponent implements OnInit {
+
   @Input() measure = '';
   @Input() measureTo = '';
 
-  primeiroValor?: number;
-  resultado = ''
+  resultado?: number;
 
   quantityInputForm = new FormGroup({
     quantityInput: new FormControl([]),
   });
 
-  constructor() { }
+  constructor () { }
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+
+  recebeInput1() {
+    let primeiroValor = parseFloat((<HTMLInputElement>document.querySelector('#primeiroValor')).value);
+    return primeiroValor;
   }
 
-  receiveInput(primeiroValor: any) {
-    primeiroValor = parseFloat((<HTMLInputElement>document.querySelector('#primeiroValor')).value);
-    console.log("primeiroValor " + primeiroValor);
+  recebeInput2() {
+    let segundoValor = parseFloat((<HTMLInputElement>document.querySelector('#segundoValor')).value);
+    return segundoValor;
   }
 
-  conversion(primeiroValor: any) {
-    let resultado = this.primeiroValor
-    console.log("resultado = " + resultado);
-    document.getElementById('segundoValor')?.innerHTML
+  converteValor1() {
+    let valor1 = this.recebeInput1();
+    let resultado: number;
+    resultado = valor1 * 9 / 5 + 32;
+    this.resultado = resultado;
+
   }
 
-
+  converteValor2() {
+    let valor2 = this.recebeInput2();
+    let resultado: number;
+    resultado = (valor2 - 32) * 5/9 
+    this.resultado = resultado;
+  }
 }
