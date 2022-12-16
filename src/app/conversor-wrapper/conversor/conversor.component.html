@@ -1,0 +1,24 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12 text-center p-5">
+            <h1>Você está vendo a conversão entre {{measureFrom.type}} e {{measureTo.type}}</h1>
+        </div>
+        <div class="col-6">
+            <app-value-input [measure]="measureFrom" (measureChangeEvent)="convertionValue($event)"></app-value-input>
+        </div>
+        <div class="col-6">
+            <app-value-input [measure]="measureTo" (measureChangeEvent)="convertionValue($event)"></app-value-input>
+        </div>
+        <!-- <div class="col-12 mt-5 text-center">
+            <mat-card class="text-center">
+                    <mat-card-title>Resultado da Conversão</mat-card-title>
+                    <mat-card-subtitle class="pt-3">Você realizou a conversão de <b>{{measureFrom}}</b> para <b>{{measureTo}}</b></mat-card-subtitle>
+                
+            </mat-card>
+        </div> -->
+        <div class="col-6 py-5">
+            <button mat-raised-button color="primary" routerLink="/unit-selection">Voltar</button>
+        </div>
+
+    </div>
+</div>

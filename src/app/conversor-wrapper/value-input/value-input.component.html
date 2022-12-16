@@ -1,0 +1,22 @@
+<mat-card class="text-center py-5">
+    
+    <mat-card-title class="h6">Medida a ser convertida: {{measure.type}}</mat-card-title>
+    
+    <form class="form-size" [formGroup]="quantityInputForm">
+
+        <mat-form-field class="form-width">
+          <input matInput 
+          type="number" 
+          placeholder="Insira o valor a ser convertido"
+          formControlName="quantityInput"
+          #quantityInput
+          [value]="measure.value"
+          >
+        </mat-form-field>
+    </form>
+
+    <mat-card-actions>
+        <button mat-raised-button color="primary" (click)="convert(+quantityInput.value)">Converter</button>
+    </mat-card-actions>
+
+</mat-card>
