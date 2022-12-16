@@ -1,5 +1,5 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
@@ -8,10 +8,12 @@ import { Router } from '@angular/router';
   styleUrls: ['./unit-selection.component.scss']
 })
 export class UnitSelectionComponent implements OnInit {
+  //declarar variavel e definir quais tipos terao para aparecer no select
   temperatures = ["Celsius", "Fahrenheit", "Kelvin"];
-  weights = ["Grama", "Quilo", "Libra", "Onça"];
-  lenghts = ["Centímetro", "Metro", "Polegadas", "Pés", "Jardas"];
+  weights = ["Quilo", "Libra", "Onça"];
+  lenghts = ["Metro", "Polegada", "Pé"]; 
 
+  //declarar variaveis para receber os valores de cada select atraves do [(value)] do mat-select no template
   tempFromValue:string = '';
   tempToValue:string = '';
 
@@ -21,21 +23,24 @@ export class UnitSelectionComponent implements OnInit {
   lenghtFromValue:string = '';
   lenghtToValue:string = '';
 
-
+  //definir formularios, criando grupos para cada tipo(temperatura, peso, comprimento)
+  //foi colocado um validator de obrigatorio(required) para cada FormControl e
+  //adicionado um cross field validator para cada FormGroup, chamando o metodo...
+  //...checkEqualValidator com os params ref a cada FormGroup.
   tempConversor = new FormGroup({
-    convertTempFrom: new FormControl([]),
-    convertTempTo: new FormControl([]),
-  });
+    convertTempFrom: new FormControl('', Validators.required), //select da esquerda
+    convertTempTo: new FormControl('', Validators.required), //select da direita
+  }, { validators: this.checkEqualValidator('convertTempFrom', 'convertTempTo') });
 
   weightConversor = new FormGroup({
-    convertWeightFrom: new FormControl([]),
-    convertWeightTo: new FormControl([]),
-  });
+    convertWeightFrom: new FormControl('', Validators.required), //select da esquerda
+    convertWeightTo: new FormControl('', Validators.required), //select da direita
+  }, { validators: this.checkEqualValidator('convertWeightFrom', 'convertWeightTo') });
 
   lenghtConversor = new FormGroup({
-    convertLenghtFrom: new FormControl([]),
-    convertLenghtTo: new FormControl([]),
-  });
+    convertLenghtFrom: new FormControl('', Validators.required), //select da esquerda
+    convertLenghtTo: new FormControl('', Validators.required), //select da direita
+  }, { validators: this.checkEqualValidator('convertLenghtFrom', 'convertLenghtTo') });
 
 
   constructor(private router: Router) { }
@@ -43,33 +48,50 @@ export class UnitSelectionComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  //utiliza o router.navigate para enviar os valores selecionados como parametros na url
   selectedValueRouter(valueFrom: string, valueTo: string): any {
     if(valueFrom !== valueTo){
       console.log('deu certo');
       this.router.navigate([
-        '/conversor', 
-        valueFrom, 
-        valueTo,
+        '/conversor', //encaminha para a pagina /conversor
+        valueFrom, //primeiro parametro da url
+        valueTo, //segundo parametro da url
       ]);
     }
-    console.log('deu ruim');
   }
 
-
   convertTemperature() {
-    console.log('Convertendo de: ', this.tempFromValue + ', para: ', this.tempToValue); 
+    //chama o router navigate utilizando os variaveis que receberam os valores dos selects como parametros
     this.selectedValueRouter(this.tempFromValue, this.tempToValue);
     
   }
 
   convertWeight() {
-      console.log('Convertendo de: ', this.weightFromValue + ', para: ', this.weightToValue);
+     //chama o router navigate utilizando os variaveis que receberam os valores dos selects como parametros
       this.selectedValueRouter(this.weightFromValue, this.weightToValue);
   }
 
   convertLenght() {
-    console.log('Convertendo de: ', this.lenghtFromValue + ', para: ', this.lenghtToValue);
+     //chama o router navigate utilizando os variaveis que receberam os valores dos selects como parametros
     this.selectedValueRouter(this.lenghtFromValue, this.lenghtToValue);
+  }
+
+  //cross field validator criado para verificar se os valores dos dois selects são iguais, 
+  //caso forem, será mostrado uma mensagem de erro, caso sejam diferentes retorna null.
+  //esse metodo control.get utiliza como parametro o nome do FormControl que deseja pegar o valor
+  //para facilitar, eu criei esse metodo checkEqualValidator com esses dois parametros
+  //o valueFrom deve receber o FormControl da esquerda como string, ex: 'convertTempFrom'
+  //o valueTo deve receber o FormControl da direita como string, ex: 'convertTempTo'
+  
+  checkEqualValidator(valueFrom: string, valueTo: string): ValidatorFn {
+    return (control: AbstractControl): ValidationErrors | null => {
+  
+        const convertFrom = control.get(valueFrom);
+        const convertTo = control.get(valueTo);
+   
+        return convertFrom && convertTo && convertFrom.value === convertTo.value ? { checkEqual: true } : null;
+   
+    }
   }
   
 }
