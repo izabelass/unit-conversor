@@ -18,6 +18,7 @@ export class ValueInputComponent implements OnInit {
     quantityInput: new FormControl([]),
   });
 
+  //primeira parte do Output, declarando um evento com retorno do tipo Measure(type e value)
   @Output() measureChangeEvent = new EventEmitter<Measure>();
 
   constructor() { }
@@ -27,6 +28,7 @@ export class ValueInputComponent implements OnInit {
     this.measureValue = this.measureValue;
   }
   
+  //segunda parte do Output, no click event, enviando o valor do input field para o this.measure.value e emitindo um evento
   convert(inputValue: number) {
       this.measure.value = inputValue;
         this.measureChangeEvent.emit(this.measure);
