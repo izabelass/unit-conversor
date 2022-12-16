@@ -1,5 +1,5 @@
-import { CalculationService, ConvertData } from './../../calculation.service';
-import { Measure } from './../value-input/value-input.component';
+import { Measure } from '../../measure.model';
+import { CalculationService } from './../../calculation.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
@@ -39,20 +39,8 @@ export class ConversorComponent implements OnInit {
   }
 
   convertionValue(newValue: Measure) {
-    const dataFrom: ConvertData = {
-      measureFrom : this.measureFrom.type, 
-      measureTo: this.measureTo.type, 
-      quantityInput: newValue.value
-    };
-
-    const dataTo: ConvertData = {
-      measureTo: this.measureTo.type, 
-      measureFrom : this.measureFrom.type, 
-      quantityInput: newValue.value
-    };
-
     if(newValue.type === this.measureFrom.type) {
-      const result = this.calculationService.convertValue(dataFrom);
+      const result = this.calculationService.convertValue(this.measureFrom.type, this.measureTo.type, +newValue.value);
       if(!!result && result != null) {
         this.measureTo.value = +result;
         console.log(result, this.measureTo.value);
@@ -60,7 +48,7 @@ export class ConversorComponent implements OnInit {
     }
     
     if(newValue.type === this.measureTo.type){
-      const result = this.calculationService.convertValue(dataTo);
+      const result = this.calculationService.convertValue(this.measureTo.type, this.measureFrom.type, +newValue.value);
       if(!!result && result != null) {
         this.measureFrom.value = +result;
         console.log(result, this.measureFrom.value);
