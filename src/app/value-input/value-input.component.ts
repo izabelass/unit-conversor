@@ -24,6 +24,7 @@ export class ValueInputComponent implements OnInit {
     let primeiroValor = parseFloat(
       (<HTMLInputElement> document.querySelector('#primeiroValor')).value
     );
+    
     return primeiroValor;
   }
 
