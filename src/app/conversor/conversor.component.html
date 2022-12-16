@@ -1,16 +1,14 @@
-<div class="container">
+<div class="container d-flex justify-content-center">
     <div class="row">
-        <div class="col-12 text-center p-5">
+        <div class="col-12 d-flex justify-content-center text-center p-4">
             <h1>Você está vendo a conversão entre {{measureFrom}} e {{measureTo}}</h1>
         </div>
-        <div class="col-6">
-            <app-value-input [measure]="measureFrom"></app-value-input>
-        </div>
-        <div class="col-6">
-            <app-value-input [measure]="measureTo"></app-value-input>
-        </div>
-        <div class="col-6 p-5">
-            <button mat-raised-button color="primary" routerLink="/unit-selection">Voltar</button>
+        <div class="container-fluid d-flex justify-content-center">
+            <div class="text-center col-12 mb-2">
+                <app-value-input 
+                [measure]="measureFrom" 
+                [measureTo]="measureTo"></app-value-input>
+            </div>
         </div>
     </div>
 </div>

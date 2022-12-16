@@ -4,9 +4,10 @@ import { RouterModule, Routes } from '@angular/router';
 import { ConversorComponent } from './conversor/conversor.component';
 
 const routes: Routes = [
-  {path: 'unit-selection', component: UnitSelectionComponent },
-  {path: 'conversor/:from/:to', component: ConversorComponent },
-  {path: 'conversor', component: ConversorComponent },
+  { path: '', pathMatch: 'full', redirectTo: 'unit-selection' },
+  { path: 'unit-selection', component: UnitSelectionComponent },
+  { path: 'conversor/:from/:to', component: ConversorComponent },
+  { path: 'conversor', component: ConversorComponent },
 ];
 
 @NgModule({
