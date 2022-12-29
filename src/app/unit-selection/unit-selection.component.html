@@ -1,18 +1,21 @@
 <div class="container">
-
   <div class="row">
-
     <!-- CONVERSOR TEMPERATURA -->
     <div class="col-12 m-3">
       <mat-card class="text-center bg-light">
-          <mat-card-title class="my-3">Calculadora de Temperatura</mat-card-title>
-          <mat-card-subtitle class="mb-3">Selecione os valores para a conversão:</mat-card-subtitle>
+        <mat-card-title class="my-3">Calculadora de Temperatura</mat-card-title>
+        <mat-card-subtitle class="mb-3"
+          >Selecione os valores para a conversão:</mat-card-subtitle
+        >
 
         <form [formGroup]="tempConversor" (ngSubmit)="convertTemperature()">
-      
           <mat-form-field class="me-5" appearance="fill">
             <mat-label>Converter de: </mat-label>
-            <mat-select formControlName="convertTempFrom" #convertTempFrom [(value)]="tempFromValue">
+            <mat-select
+              formControlName="convertTempFrom"
+              #convertTempFrom
+              [(value)]="tempFromValue"
+            >
               <mat-option
                 *ngFor="let temperature of temperatures"
                 [value]="temperature"
@@ -21,10 +24,14 @@
               </mat-option>
             </mat-select>
           </mat-form-field>
-      
+
           <mat-form-field appearance="fill">
             <mat-label>Converter para: </mat-label>
-            <mat-select formControlName="convertTempTo" #convertTempTo [(value)]="tempToValue">
+            <mat-select
+              formControlName="convertTempTo"
+              #convertTempTo
+              [(value)]="tempToValue"
+            >
               <mat-option
                 *ngFor="let temperature of temperatures"
                 [value]="temperature"
@@ -33,15 +40,25 @@
               </mat-option>
             </mat-select>
           </mat-form-field>
-      
+
           <mat-card-actions>
-            <button [disabled]="tempConversor.errors?.['checkEqual'] && (tempConversor.touched || tempConversor.dirty)"
-             mat-raised-button color="primary" type="submit">Converter</button>
+            <button
+              [disabled]="tempConversor.errors?.['checkEqual'] && (tempConversor.touched || tempConversor.dirty)"
+              mat-raised-button
+              color="primary"
+              type="submit"
+            >
+              Converter
+            </button>
           </mat-card-actions>
         </form>
       </mat-card>
-      <div *ngIf="tempConversor.errors?.['checkEqual'] && (tempConversor.dirty)" class="cross-validation-error-message alert alert-danger">
-        Os dois campos <b>NÃO</b> podem ser iguais! Selecione duas opções diferentes e tente novamente.
+      <div
+        *ngIf="tempConversor.errors?.['checkEqual'] && (tempConversor.dirty)"
+        class="cross-validation-error-message alert alert-danger"
+      >
+        Os dois campos <b>NÃO</b> podem ser iguais! Selecione duas opções
+        diferentes e tente novamente.
       </div>
     </div>
 
@@ -49,42 +66,53 @@
     <div class="col-12 m-3">
       <mat-card class="text-center bg-light">
         <mat-card-title class="my-3">Calculadora de Peso</mat-card-title>
-        <mat-card-subtitle class="mb-3">Selecione os valores para a conversão:</mat-card-subtitle>
+        <mat-card-subtitle class="mb-3"
+          >Selecione os valores para a conversão:</mat-card-subtitle
+        >
 
         <form [formGroup]="weightConversor" (ngSubmit)="convertWeight()">
-      
           <mat-form-field class="me-5" appearance="fill">
             <mat-label>Converter de: </mat-label>
-            <mat-select formControlName="convertWeightFrom" #convertWeightFrom [(value)]="weightFromValue">
-              <mat-option
-                *ngFor="let weight of weights"
-                [value]="weight"
-              >
+            <mat-select
+              formControlName="convertWeightFrom"
+              [(value)]="weightFromValue"
+            >
+              <mat-option *ngFor="let weight of weights" [value]="weight">
                 {{ weight }}
               </mat-option>
             </mat-select>
           </mat-form-field>
-      
+
           <mat-form-field appearance="fill">
             <mat-label>Converter para: </mat-label>
-            <mat-select formControlName="convertWeightTo" #convertWeightTo [(value)]="weightToValue">
-              <mat-option
-                *ngFor="let weight of weights"
-                [value]="weight"
-              >
+            <mat-select
+              formControlName="convertWeightTo"
+              [(value)]="weightToValue"
+            >
+              <mat-option *ngFor="let weight of weights" [value]="weight">
                 {{ weight }}
               </mat-option>
             </mat-select>
           </mat-form-field>
-      
+
           <mat-card-actions>
-            <button [disabled]="weightConversor.errors?.['checkEqual'] && (weightConversor.touched || weightConversor.dirty)"
-            mat-raised-button color="primary" type="submit">Converter</button>
+            <button
+              [disabled]="weightConversor.errors?.['checkEqual'] && (weightConversor.touched || weightConversor.dirty)"
+              mat-raised-button
+              color="primary"
+              type="submit"
+            >
+              Converter
+            </button>
           </mat-card-actions>
         </form>
       </mat-card>
-      <div *ngIf="weightConversor.errors?.['checkEqual'] && (weightConversor.dirty)" class="cross-validation-error-message alert alert-danger">
-        Os dois campos <b>NÃO</b> podem ser iguais! Selecione duas opções diferentes e tente novamente.
+      <div
+        *ngIf="weightConversor.errors?.['checkEqual'] && (weightConversor.dirty)"
+        class="cross-validation-error-message alert alert-danger"
+      >
+        Os dois campos <b>NÃO</b> podem ser iguais! Selecione duas opções
+        diferentes e tente novamente.
       </div>
     </div>
 
@@ -92,46 +120,56 @@
     <div class="col-12 m-3">
       <mat-card class="text-center bg-light">
         <mat-card-title class="my-3">Calculadora de Comprimento</mat-card-title>
-        <mat-card-subtitle class="mb-3">Selecione os valores para a conversão:</mat-card-subtitle>
+        <mat-card-subtitle class="mb-3"
+          >Selecione os valores para a conversão:</mat-card-subtitle
+        >
 
         <form [formGroup]="lenghtConversor" (ngSubmit)="convertLenght()">
-      
           <mat-form-field class="me-5" appearance="fill">
             <mat-label>Converter de: </mat-label>
-            <mat-select formControlName="convertLenghtFrom" #convertLenghtFrom [(value)]="lenghtFromValue">
-              <mat-option
-                *ngFor="let lenght of lenghts"
-                [value]="lenght"
-              >
+            <mat-select
+              formControlName="convertLenghtFrom"
+              #convertLenghtFrom
+              [(value)]="lenghtFromValue"
+            >
+              <mat-option *ngFor="let lenght of lenghts" [value]="lenght">
                 {{ lenght }}
               </mat-option>
             </mat-select>
           </mat-form-field>
-      
+
           <mat-form-field appearance="fill">
             <mat-label>Converter para: </mat-label>
-            <mat-select formControlName="convertLenghtTo" #convertLenghtTo [(value)]="lenghtToValue">
-              <mat-option
-                *ngFor="let lenght of lenghts"
-                [value]="lenght"
-              >
+            <mat-select
+              formControlName="convertLenghtTo"
+              #convertLenghtTo
+              [(value)]="lenghtToValue"
+            >
+              <mat-option *ngFor="let lenght of lenghts" [value]="lenght">
                 {{ lenght }}
               </mat-option>
             </mat-select>
           </mat-form-field>
-      
+
           <mat-card-actions>
-            <button [disabled]="lenghtConversor.errors?.['checkEqual'] && (lenghtConversor.touched || lenghtConversor.dirty)"
-            mat-raised-button color="primary" type="submit">Converter</button>
+            <button
+              [disabled]="lenghtConversor.errors?.['checkEqual'] && (lenghtConversor.touched || lenghtConversor.dirty)"
+              mat-raised-button
+              color="primary"
+              type="submit"
+            >
+              Converter
+            </button>
           </mat-card-actions>
         </form>
       </mat-card>
-      <div *ngIf="lenghtConversor.errors?.['checkEqual'] && (lenghtConversor.dirty)" class="cross-validation-error-message alert alert-danger">
-        Os dois campos <b>NÃO</b> podem ser iguais! Selecione duas opções diferentes e tente novamente.
+      <div
+        *ngIf="lenghtConversor.errors?.['checkEqual'] && (lenghtConversor.dirty)"
+        class="cross-validation-error-message alert alert-danger"
+      >
+        Os dois campos <b>NÃO</b> podem ser iguais! Selecione duas opções
+        diferentes e tente novamente.
       </div>
     </div>
-
-
   </div>
-
 </div>

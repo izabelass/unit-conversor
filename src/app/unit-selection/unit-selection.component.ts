@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { selectionValidators } from './selection.validators';
 
 @Component({
   selector: 'app-unit-selection',
@@ -30,28 +31,29 @@ export class UnitSelectionComponent implements OnInit {
   tempConversor = new FormGroup({
     convertTempFrom: new FormControl('', Validators.required), //select da esquerda
     convertTempTo: new FormControl('', Validators.required), //select da direita
-  }, { validators: this.checkEqualValidator('convertTempFrom', 'convertTempTo') });
+  }, { validators: selectionValidators.checkEqualValidator('convertTempFrom', 'convertTempTo') });
 
   weightConversor = new FormGroup({
     convertWeightFrom: new FormControl('', Validators.required), //select da esquerda
     convertWeightTo: new FormControl('', Validators.required), //select da direita
-  }, { validators: this.checkEqualValidator('convertWeightFrom', 'convertWeightTo') });
+  }, { validators: selectionValidators.checkEqualValidator('convertWeightFrom', 'convertWeightTo') });
 
   lenghtConversor = new FormGroup({
     convertLenghtFrom: new FormControl('', Validators.required), //select da esquerda
     convertLenghtTo: new FormControl('', Validators.required), //select da direita
-  }, { validators: this.checkEqualValidator('convertLenghtFrom', 'convertLenghtTo') });
+  }, { validators: selectionValidators.checkEqualValidator('convertLenghtFrom', 'convertLenghtTo') });
 
 
   constructor(private router: Router) { }
 
+  
   ngOnInit(): void {
+
   }
 
   //utiliza o router.navigate para enviar os valores selecionados como parametros na url
   selectedValueRouter(valueFrom: string, valueTo: string): any {
     if(valueFrom !== valueTo){
-      console.log('deu certo');
       this.router.navigate([
         '/conversor', //encaminha para a pagina /conversor
         valueFrom, //primeiro parametro da url
@@ -83,16 +85,16 @@ export class UnitSelectionComponent implements OnInit {
   //o valueFrom deve receber o FormControl da esquerda como string, ex: 'convertTempFrom'
   //o valueTo deve receber o FormControl da direita como string, ex: 'convertTempTo'
   
-  checkEqualValidator(valueFrom: string, valueTo: string): ValidatorFn {
-    return (control: AbstractControl): ValidationErrors | null => {
+  // checkEqualValidator(valueFrom: string, valueTo: string): ValidatorFn {
+  //   return (control: AbstractControl): ValidationErrors | null => {
   
-        const convertFrom = control.get(valueFrom);
-        const convertTo = control.get(valueTo);
+  //       const convertFrom = control.get(valueFrom);
+  //       const convertTo = control.get(valueTo);
    
-        return convertFrom && convertTo && convertFrom.value === convertTo.value ? { checkEqual: true } : null;
+  //       return convertFrom && convertTo && convertFrom.value === convertTo.value ? { checkEqual: true } : null;
    
-    }
-  }
+  //   }
+  // }
   
 }
 
